@@ -1,38 +1,68 @@
 import { useNavigate } from "react-router-dom";
 import { ReactBarcode } from 'react-jsbarcode';
 import QRCode from "react-qr-code";
+import { useEffect, useState } from "react";
 
 const Aproovinfandstuff = (props) => {
     const navigate = useNavigate();
+
+    const [name, setName] = useState("");
+    const [format, setFormat] = useState();
+    const [value, setValue] = useState();
+
     function goback() {
         navigate("/");
     }
+
+    function handleClick() {
+        //props.setDatabase(...props.database, JSON.stringify(format, value, name));
+        props.setDatabase([...props.database, {format, value, name}]);
+        navigate("/");
+    }
+
+
+    useEffect(() => {
+        setFormat(props.code[0]);
+        setValue(props.code[1])
+    },[]);
+
     return (
         <>
             <div style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                width:"100vw",
+                width: "100vw",
             }}>
-                {props.code[0] == "qrcode" && props.code[0] != "" &&
+                {format == "qrcode" && format != "" &&
                     <QRCode
                         size={256}
                         style={{ height: "200px", maxWidth: "100%", width: "100%" }}
-                        value={props.code[1]}
+                        value={value}
                         viewBox={`0 0 256 256`}
                     />
-                    || props.code[0] != "qrcode" && props.code[0] != "" &&
-                    <ReactBarcode value={props.code[1]} options={{ format: props.code[0] }} renderer="svg" />
+                    || format != "qrcode" && format != "" &&
+                    <ReactBarcode value={value} options={{ format: format }} renderer="svg" />
                 }
-                <div style={{
+                <form style={{
+                    marginTop: "10px",
+                    color: "white",
+                    width: "100%",
                     display: "flex",
-                    position: "absolute",
-                    bottom:0,
+                    alignItems: "center",
+                    flexDirection: "column",
                 }}>
-                    <button onClick={goback} style={{width: "50vw"}}>Return</button>
-                    <button style={{width: "50vw"}}>Aprooved</button>
-                </div>
+                    <label>Název <input name="nazev" type="text" id="nazev" onChange={(e) => setName(e.target.value)} /></label>
+
+                    <div style={{
+                        display: "flex",
+                        position: "absolute",
+                        bottom: 0,
+                    }}>
+                        <button onClick={goback} style={{ width: "50vw" }}>Return</button>
+                        <button type="button" style={{ width: "50vw" }} onClick={handleClick}>Aprooved</button>
+                    </div>
+                </form>
             </div>
         </>
     )

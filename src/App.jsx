@@ -2,19 +2,21 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Scanandstuff from "./assets/Components/Scanandstuff";
 import { useEffect, useState } from "react";
 import Aproovinfandstuff from "./assets/Components/Aproovingandstuff";
+import { HomePage } from "./assets/Components/HomePage";
 
 function App() {
   
 
-  const [codes, setCodes] = useState({});
+  const [codes, setCodes] = useState([]);
   const [code, setCode] = useState([]);
 
 
   useEffect(() => {
+    console.log(codes);
     screen.orientation
       .lock("portrait")
       .catch((err) => console.error(err));
-  },[])
+  },[codes])
 
   //Default
   function Home() {
@@ -25,6 +27,7 @@ function App() {
 
     return (
       <>
+        <HomePage database={codes}/>
         <h1>Hello</h1>
         <button onClick={handleClick}>button</button>
       </>
@@ -36,7 +39,7 @@ function App() {
   }
 
   function Aprooving() {
-    return <Aproovinfandstuff code={code}/>
+    return <Aproovinfandstuff code={code} setDatabase={setCodes} database={codes}/>
   }
 
   function Editing() {
