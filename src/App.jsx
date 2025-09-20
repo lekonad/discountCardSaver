@@ -3,6 +3,7 @@ import Scanandstuff from "./assets/Components/Scanandstuff";
 import { useEffect, useState } from "react";
 import Aproovinfandstuff from "./assets/Components/Aproovingandstuff";
 import { HomePage } from "./assets/Components/HomePage";
+import { Displayingandstuff } from "./assets/Components/Displayingandstuff";
 
 function App() {
   
@@ -27,7 +28,7 @@ function App() {
 
     return (
       <>
-        <HomePage database={codes}/>
+        <HomePage database={codes} setView={setCode}/>
         <h1>Hello</h1>
         <button onClick={handleClick}>button</button>
       </>
@@ -47,7 +48,11 @@ function App() {
   }
 
   function View() {
-
+    return (
+      <>
+        <Displayingandstuff data={code}/>
+      </>
+    ); 
   }
 
   return (
