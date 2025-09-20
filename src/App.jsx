@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Scanandstuff from "./assets/Components/Scanandstuff";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Aproovinfandstuff from "./assets/Components/Aproovingandstuff";
 
 function App() {
@@ -8,6 +8,13 @@ function App() {
 
   const [codes, setCodes] = useState({});
   const [code, setCode] = useState([]);
+
+
+  useEffect(() => {
+    screen.orientation
+      .lock("portrait")
+      .catch((err) => console.error(err));
+  },[])
 
   //Default
   function Home() {
