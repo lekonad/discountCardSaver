@@ -12,6 +12,7 @@ const Aproovinfandstuff = (props) => {
             <div style={{
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "center",
                 width:"100vw",
             }}>
                 {props.code[0] == "qrcode" && props.code[0] != "" &&
