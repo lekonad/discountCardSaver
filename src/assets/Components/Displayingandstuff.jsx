@@ -29,7 +29,8 @@ export const Displayingandstuff = (props) => {
         setName(props.data.name);
         setID(props.data.maxID);
         console.log(props.data);
-    }, [])
+        localStorage.setItem("database", JSON.stringify(props.database));
+    }, [props.database])
 
     return (
         <div style={{

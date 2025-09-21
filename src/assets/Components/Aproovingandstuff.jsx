@@ -17,12 +17,12 @@ const Aproovinfandstuff = (props) => {
     }
 
     function handleClick() {
-        props.setMaxID(maxID + 1);
+        props.setMaxID(Number(maxID) + 1);
         console.log(props.maxID);
         //props.setDatabase(...props.database, JSON.stringify(format, value, name));
         props.setDatabase([...props.database, { maxID, format, value, name }]);
-        localStorage.setItem("maxID", maxID);
-        console.log(localStorage.getItem("maxID"));
+        /*localStorage.setItem("maxID", maxID);
+        console.log(localStorage.getItem("maxID"));*/
         navigate("/");
     }
 
@@ -31,7 +31,9 @@ const Aproovinfandstuff = (props) => {
         setFormat(props.code[0]);
         setValue(props.code[1])
         setMaxID(props.maxID);
-    }, []);
+        localStorage.setItem("database", JSON.stringify(props.database));
+        localStorage.setItem("maxID", Number(props.maxID));
+    }, [props.database]);
 
     return (
         <>

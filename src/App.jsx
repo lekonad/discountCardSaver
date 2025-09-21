@@ -6,48 +6,55 @@ import { HomePage } from "./assets/Components/HomePage";
 import { Displayingandstuff } from "./assets/Components/Displayingandstuff";
 
 function App() {
-  
+
 
   const [codes, setCodes] = useState([]);
   const [code, setCode] = useState([]);
   const [maxID, setMaxID] = useState(0);
 
   useEffect(() => {
+    if (localStorage.getItem("database") == null) localStorage.setItem("database", JSON.stringify([]));
+    if (localStorage.getItem("maxID") == null) localStorage.setItem("maxID", 0);
+    setMaxID(Number(localStorage.getItem("maxID")));
+    setCodes(JSON.parse(localStorage.getItem("database")))
     console.log(codes);
+    //localStorage.setItem("database", JSON.stringify(codes))
+    console.log(localStorage.getItem("database"));
+    console.log(JSON.parse(localStorage.getItem("database")));
     screen.orientation
       .lock("portrait")
       .catch((err) => console.error(err));
-  },[codes])
+  }, [])
 
   //Default
   function Home() {
-    
+
 
     return (
       <>
-        <HomePage database={codes} setView={setCode}/>
+        <HomePage database={codes} setView={setCode} />
       </>
     );
   }
 
   function Scanning() {
-    return <Scanandstuff code={setCode}/>
+    return <Scanandstuff code={setCode} />
   }
 
   function Aprooving() {
-    return <Aproovinfandstuff code={code} setDatabase={setCodes} database={codes} setMaxID={setMaxID} maxID={maxID}/>
+    return <Aproovinfandstuff code={code} setDatabase={setCodes} database={codes} setMaxID={setMaxID} maxID={maxID} />
   }
 
   function Editing() {
-    
+
   }
 
   function View() {
     return (
       <>
-        <Displayingandstuff data={code} setDatabase={setCodes} database={codes}/>
+        <Displayingandstuff data={code} setDatabase={setCodes} database={codes} />
       </>
-    ); 
+    );
   }
 
   return (
@@ -57,8 +64,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Scanning" element={<Scanning />} />
           <Route path="/Aprooving" element={<Aprooving />} />
-          <Route path="/Editing" element={<Editing />}/>
-          <Route path="/View" element={<View/>}/>
+          <Route path="/Editing" element={<Editing />} />
+          <Route path="/View" element={<View />} />
         </Routes>
       </BrowserRouter>
     </>
