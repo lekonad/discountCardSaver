@@ -5,19 +5,48 @@ export const HomePage = (props) => {
 
     const navigate = useNavigate();
 
+
+    const BUTTON = {
+        width: "80px",
+        height: "80px",
+        margin: "auto",
+        marginBottom: 20
+    }
+
     function switchToView(data) {
         console.log(data);
         props.setView(data);
         navigate("/View");
     }
 
+    function handleClick() {
+        navigate("./Scanning");
+    }
+
     return (
-        <>
-            {
-                props.database.map(data => (
-                    <button onClick={() => switchToView(data)}>{data.name}</button>
-                ))
-            }
-        </>
+        <div style={{
+            height: "90vh",
+            width: "80vw",
+            display: 'flex',
+            flexDirection: "column",
+        }}>
+            <div style={{
+                display: "grid",
+                width: "100%",
+                height: "auto",
+                gridTemplateColumns: "repeat(auto-fill, 100px)",
+                justifyContent: "Center",
+
+            }}>
+                {
+                    props.database.map(data => (
+                        <button style={BUTTON} onClick={() => switchToView(data)}>{data.name}</button>
+                    ))
+
+                }
+                <button style={BUTTON} onClick={handleClick}>+</button>
+            </div>
+        </div>
+
     )
 }

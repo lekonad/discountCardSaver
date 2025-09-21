@@ -21,16 +21,11 @@ function App() {
 
   //Default
   function Home() {
-    const navigate = useNavigate();
-    function handleClick() {
-      navigate("./Scanning");
-    } 
+    
 
     return (
       <>
         <HomePage database={codes} setView={setCode}/>
-        <h1>Hello</h1>
-        <button onClick={handleClick}>button</button>
       </>
     );
   }
