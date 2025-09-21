@@ -10,16 +10,24 @@ export const Displayingandstuff = (props) => {
     const [format, setFormat] = useState();
     const [name, setName] = useState();
     const [value, setValue] = useState();
+    const [ID, setID] = useState();
 
 
     function backtothefuture() {
         navigate("/");
     }
 
+    function remove() {
+        const newlist = props.database.filter((stuff) => stuff.maxID != ID);
+        props.setDatabase(newlist);
+        navigate("/");
+    }
+
     useEffect(() => {
         setFormat(props.data.format);
         setValue(props.data.value);
-        setName(props.data.name)
+        setName(props.data.name);
+        setID(props.data.maxID);
         console.log(props.data);
     }, [])
 
@@ -40,8 +48,13 @@ export const Displayingandstuff = (props) => {
                 || format != "qrcode" && format != "" &&
                 <ReactBarcode value={value} options={{ format: format }} renderer="svg" />
             }
+            <div style={{
+                display: "flex",
+            }}>
+                <button onClick={remove}>remove</button>
+                <button onClick={backtothefuture}>return</button>
+            </div>
 
-            <button onClick={backtothefuture}>return</button>
         </div>
     );
 

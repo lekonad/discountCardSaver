@@ -10,7 +10,7 @@ function App() {
 
   const [codes, setCodes] = useState([]);
   const [code, setCode] = useState([]);
-
+  const [maxID, setMaxID] = useState(0);
 
   useEffect(() => {
     console.log(codes);
@@ -35,7 +35,7 @@ function App() {
   }
 
   function Aprooving() {
-    return <Aproovinfandstuff code={code} setDatabase={setCodes} database={codes}/>
+    return <Aproovinfandstuff code={code} setDatabase={setCodes} database={codes} setMaxID={setMaxID} maxID={maxID}/>
   }
 
   function Editing() {
@@ -45,7 +45,7 @@ function App() {
   function View() {
     return (
       <>
-        <Displayingandstuff data={code}/>
+        <Displayingandstuff data={code} setDatabase={setCodes} database={codes}/>
       </>
     ); 
   }
