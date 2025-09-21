@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import '../../App.css';
 
 export const HomePage = (props) => {
 
     const navigate = useNavigate();
 
 
-    const BUTTON = {
+    /*const BUTTON = {
         width: "80px",
         height: "80px",
         margin: "auto",
-        marginBottom: 20
-    }
+        marginBottom: 20,
+        borderRadius: "20px",
+        borderWidth: "5px",
+        WebkitBoxShadow: "0px 15px 20px -10px #000000",
+        BoxShadow: "0px 15px 20px -10px #000000",
+    }*/
 
     function switchToView(data) {
         console.log(data);
@@ -40,13 +45,12 @@ export const HomePage = (props) => {
             }}>
                 {
                     props.database.map(data => (
-                        <button style={BUTTON} onClick={() => switchToView(data)}>{data.name}</button>
+                        <button className='button' onClick={() => switchToView(data)}>{data.name}</button>
                     ))
 
                 }
-                <button style={BUTTON} onClick={handleClick}>+</button>
+                <button className='button' onClick={handleClick}>+</button>
             </div>
         </div>
-
     )
 }

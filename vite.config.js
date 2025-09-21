@@ -17,7 +17,7 @@ export default defineConfig({
       name: 'Slevové Karty',
       short_name: 'Karty',
       description: 'Aplikace pro skenování a ukládání slevových karet lokálně na vašem zařízení',
-      theme_color: '#ffffff',
+      theme_color: '#252423',
     },
 
     workbox: {
