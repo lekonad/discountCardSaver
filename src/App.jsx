@@ -21,7 +21,7 @@ function App() {
     //localStorage.setItem("database", JSON.stringify(codes))
     console.log(localStorage.getItem("database"));
     console.log(JSON.parse(localStorage.getItem("database")));
-    screen.orientation.lock("portrait");
+    window.screen.orientation.lock("portrait");
   }, [])
 
   //Default
