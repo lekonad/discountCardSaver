@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ReactBarcode } from "react-jsbarcode";
 import QRCode from "react-qr-code";
 import { useNavigate } from "react-router-dom"
-
+import "../../App.css"
 
 export const Displayingandstuff = (props) => {
 
@@ -11,7 +11,6 @@ export const Displayingandstuff = (props) => {
     const [name, setName] = useState();
     const [value, setValue] = useState();
     const [ID, setID] = useState();
-
 
     function backtothefuture() {
         navigate("/");
@@ -37,8 +36,8 @@ export const Displayingandstuff = (props) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            overflowY: "hiden",
         }}>
-            <h1>{name}</h1>
             {format == "qrcode" && format != "" &&
                 <QRCode
                     size={256}
@@ -47,13 +46,24 @@ export const Displayingandstuff = (props) => {
                     viewBox={`0 0 256 256`}
                 />
                 || format != "qrcode" && format != "" &&
-                <ReactBarcode value={value} options={{ format: format }} renderer="svg" />
+                <ReactBarcode value={value} options={{ width: 2.5, height: 500, format: format, text: name, flat: true }} renderer="svg" />
             }
             <div style={{
                 display: "flex",
+                position: "absolute",
+                bottom: 0,
+                height: "50px",
             }}>
-                <button onClick={remove}>remove</button>
-                <button onClick={backtothefuture}>return</button>
+                <button onClick={remove} style={{ 
+                    width: "50vw",
+                    backgroundColor: "red",
+                    borderRadius: "50px",
+                    }}>remove</button>
+                <button onClick={backtothefuture} style={{ 
+                    width: "50vw",
+                    backgroundColor: "lightgreen",
+                    borderRadius: "50px"
+                    }}>return</button>
             </div>
 
         </div>

@@ -10,7 +10,7 @@ const Aproovinfandstuff = (props) => {
     const [format, setFormat] = useState();
     const [value, setValue] = useState();
     const [maxID, setMaxID] = useState();
-    
+
 
     function goback() {
         navigate("/");
@@ -42,6 +42,7 @@ const Aproovinfandstuff = (props) => {
                 flexDirection: "column",
                 alignItems: "center",
                 width: "100vw",
+                overflowY: "hidden",
             }}>
                 {format == "qrcode" && format != "" &&
                     <QRCode
@@ -68,9 +69,18 @@ const Aproovinfandstuff = (props) => {
                         display: "flex",
                         position: "absolute",
                         bottom: 0,
+                        height: "50px",
                     }}>
-                        <button type="button" onClick={goback} style={{ width: "50vw" }}>Return</button>
-                        <button type="button" style={{ width: "50vw" }} onClick={handleClick}>Aprooved</button>
+                        <button type="button" onClick={goback} style={{
+                            width: "50vw",
+                            backgroundColor: "red",
+                            borderRadius: "50px",
+                        }}>Return</button>
+                        <button type="button" style={{
+                            width: "50vw",
+                            backgroundColor: "lightgreen",
+                            borderRadius: "50px",
+                        }} onClick={handleClick}>Aprooved</button>
                     </div>
                 </form>
             </div>
