@@ -36,7 +36,7 @@ export const Displayingandstuff = (props) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            overflowY: "hiden",
+            overflowY: "hidden",
         }}>
             {format == "qrcode" && format != "" &&
                 <QRCode

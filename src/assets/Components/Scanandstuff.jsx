@@ -27,7 +27,11 @@ const Scanandstuff = (props) => {
     <>
 
       <div id="scanner">
-        <button onClick={immaheadout}>return</button>
+        <button onClick={immaheadout} style={{
+          height: "50px",
+          borderRadius: "100px",
+          margin: 10,
+        }}>return</button>
         <Scanner components={{finder: false}} styles={{container: {
           borderRadius: "50px",
         }}} formats={
