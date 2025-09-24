@@ -46,7 +46,7 @@ export const Displayingandstuff = (props) => {
                     viewBox={`0 0 256 256`}
                 />
                 || format != "qrcode" && format != "" &&
-                <ReactBarcode value={value} options={{ width: 2.5, height: 500, format: format, text: name, flat: true }} renderer="svg" />
+                <ReactBarcode value={value} options={{ width: 2.5, height:200, format: format, text: name, flat: true }} renderer="svg" />
             }
             <div style={{
                 display: "flex",
@@ -55,12 +55,12 @@ export const Displayingandstuff = (props) => {
                 height: "50px",
             }}>
                 <button onClick={remove} style={{ 
-                    width: "50vw",
+                    width: "50px",
                     backgroundColor: "red",
                     borderRadius: "50px",
                     }}>remove</button>
                 <button onClick={backtothefuture} style={{ 
-                    width: "50vw",
+                    width: "calc(100vw - 50px)",
                     backgroundColor: "lightgreen",
                     borderRadius: "50px"
                     }}>return</button>
